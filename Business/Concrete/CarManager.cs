@@ -41,12 +41,12 @@ namespace Business.Concrete
             return _carDal.GetAll();
         }
 
-        public List<Car> GetByBrandId(int brandId)
+        public List<Car> GetCarsByBrandId(int brandId)
         {
             return _carDal.GetAll(p => p.BrandId == brandId);
         }
 
-        public List<Car> GetByColorId(int colorId)
+        public List<Car> GetCarsByColorId(int colorId)
         {
             return _carDal.GetAll(p => p.ColorId == colorId);
         }
