@@ -1,4 +1,5 @@
 ﻿using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.DTOs;
 using System;
@@ -59,7 +60,24 @@ namespace DataAccess.Concrete.InMemory
 
         public List<CarDetailDto> GetCarDetails()
         {
-            throw new NotImplementedException();
+            using (CarRentalContext context = new CarRentalContext())
+            {
+                var result = from c in context.Cars
+                             join b in context.Brands
+                             on c.BrandId equals b.BrandId
+                             join clr in context.Colors
+                             on c.BrandId equals clr.ColorId
+                             select new CarDetailDto
+                             {
+                                 CarId = c.CarId,
+                                 CarName = c.CarName,
+                                 BrandName = b.BrandName,
+                                 ColorName = clr.ColorName,
+                                 DailyPrice = c.DailyPrice
+                             };
+
+                return result.ToList();
+            }
         }
 
         public void Update(Car car)
