@@ -13,7 +13,7 @@ namespace ConsoleUI
             //CarManagerTest();
 
             CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetCarDetails())
+            foreach (var car in carManager.GetCarDetails().Data)
             {
                 Console.WriteLine(car.CarName + " / " + car.BrandName + " / " + car.ColorName);
             }
@@ -22,7 +22,7 @@ namespace ConsoleUI
         private static void CarManagerTest()
         {
             CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetCarsByBrandId(1))
+            foreach (var car in carManager.GetCarsByBrandId(1).Data)
             {
                 Console.WriteLine(car.Description);
             }
