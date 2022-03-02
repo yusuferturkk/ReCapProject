@@ -12,7 +12,7 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core.Utilities.Security.JWT
+namespace Core.Utilities.Security.Jwt
 {
     public class JwtHelper : ITokenHelper
     {
