@@ -2,6 +2,7 @@ using Business.Abstract;
 using Business.Concrete;
 using Core.DependencyResolvers;
 using Core.Extensions;
+using Core.Utilities.IoC;
 using Core.Utilities.Security.Encryption;
 using Core.Utilities.Security.Jwt;
 using DataAccess.Abstract;
@@ -60,7 +61,7 @@ namespace WebAPI
                     };
                 });
 
-            services.AddDependencyResolvers(new Core.Utilities.IoC.ICoreModule[] {
+            services.AddDependencyResolvers(new ICoreModule[] {
                 new CoreModule()
             });
         }
